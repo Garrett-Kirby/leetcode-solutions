@@ -1,0 +1,30 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+    
+        //if the input is equal to 0 it is a palindrome
+        if (x == 0)
+            return true;
+            
+        // if the input is negative, or divisable by 10 then it cannot be a palindrome
+        if (x < 0 || x % 10 == 0)
+            return false;
+          
+        int reversed = 0;
+        
+        /*while input is not equal to 0, find the reamainder after dividing by ten.
+        Then add the remainder to the reversed integer. Lastly divide the imput by 10 to get rid of the zero at the end.*/
+        while(x != 0){
+            int digit = x % 10;
+            reversed = reversed * 10 + digit;
+            x /= 10;
+            
+            //check to see if the new reversed integer is equal to the input value(if the number is uneven it will delete the middle number
+            if (x == reversed || x == reversed / 10){
+                break;
+            }
+        }
+        //finally return either true or false using the same method of checking the new reversed number with the input value    
+        return x == reversed || x == reversed / 10;
+    }
+       
+}
